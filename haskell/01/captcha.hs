@@ -9,7 +9,7 @@ main = do
   putStrLn . show . part2 $ digits
 
 part1 :: [Int] -> Int
-part1 digits = captcha 1 digits
+part1 = captcha 1
 
 part2 :: [Int] -> Int
 part2 = captcha =<< flip div 2 . length
@@ -24,4 +24,4 @@ sumPairs ((a, b):xs)
   | otherwise = sumPairs xs
 
 rotate :: Int -> [Int] -> [Int]
-rotate n list = (drop n list) ++ (take n list)
+rotate n = liftM2 take length (drop n . cycle)
